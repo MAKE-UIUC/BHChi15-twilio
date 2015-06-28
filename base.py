@@ -7,6 +7,8 @@ import config
 import requests
 import json
 import random 
+import string
+
 
 
 
@@ -17,6 +19,9 @@ app = Flask(__name__)
  
 def helper(obj):
     return obj['approx_dist']
+
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
 
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
@@ -69,7 +74,7 @@ def hello_monkey():
     
     resp = twilio.twiml.Response()
     replyString = medicine_found + " can be found at " + store_name + " " + address_found
-    replyString2 = "To prepay for pickup, text " + "\"" + price + " to order@medsnear.me note ID:" + ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(10)) + "\"" +  " to 729725" 
+    replyString2 = "To prepay for pickup, text " + "\"" + price + " to order@medsnear.me note ID:" + id_generator()+  "\"" +  " to 729725" 
     replyString3 = "Forward this to a friend if no internet is avaliable, and they are willing to pay for you."    
     replyString = replyString  + "\n" + "---------"  + "\n" + replyString2 + "\n" + "---------" + "\n" + replyString3
     resp.message(replyString)
