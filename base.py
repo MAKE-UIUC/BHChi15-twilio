@@ -10,7 +10,7 @@ import json
 
 
 SECRET_KEY =  config.key 
-GEOCODE_KEY = config.geocode_key
+GEOCODE_KEY = conf ig.geocode_key
 
 app = Flask(__name__)
  
@@ -25,8 +25,8 @@ def hello_monkey():
         resp = twilio.twiml.Response()
         resp.message(replyString)
         return str(resp)
-    medicine = name.split('near')[0]
-    location = name.split('near')[1]
+    medicine = name.split('near')[0].strip()
+    location = name.split('near')[1].strip()
     API_KEY = config.geocode_key
     Address = location 
     baseurl = "http://steam.intense.io/api/v1/users/pharmacies?medicine_name="
