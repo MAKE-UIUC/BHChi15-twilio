@@ -37,13 +37,15 @@ def hello_monkey():
     #print r.json()['results']['geometry']['location']['lat']
     jsonResponse = json.loads(r.text)
     latGrab = json.dumps([s['geometry']['location']['lat'] for s in jsonResponse['results']], indent=3)
-    lonGrab = json.dumps([s['geometry']['location']['lat'] for s in jsonResponse['results']], indent=3)
-
+    lonGrab = json.dumps([s['geometry']['location']['lon'] for s in jsonResponse['results']], indent=3)
+    print "starrrrt"
+    print latGrab
+    print lonGrab
     latitude = latGrab.replace('[', '').replace(']', '').replace(' ', '').replace('\n','')
     longitude = lonGrab.replace('[', '').replace(']', '').replace(' ', '').replace('\n','')
     replyString = latitude + "," + longitude
     resp = twilio.twiml.Response()
-    
+
 
     resp.message(replyString)
     return str(resp)
