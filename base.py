@@ -6,8 +6,8 @@ import twilio.twiml
 import config
 import requests
 import json
-import random 
-import string
+#import random 
+#import string
 
 
 
