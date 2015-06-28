@@ -49,12 +49,12 @@ def hello_monkey():
     
     replyString = medicine + "at apicall(" + latitude + "," + longitude + ")"  
     resp = twilio.twiml.Response()
-    resp.message(replyString)
+    
 
     replyString2 = "To prepay for pickup, text " + "\"" + "XX.XX to order@medsnear.me note XXXXXXX" + "\"" +  "to 729725"
    # resp2 = twilio.twiml.Response()
     resp.message(replyString2)
-
+    resp.message(replyString)
     return str(resp) #+ str(resp2)
  
 if __name__ == "__main__":
