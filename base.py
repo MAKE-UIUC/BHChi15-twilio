@@ -20,6 +20,11 @@ def helper(obj):
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
     name = request.values.get('Body', None)
+    if name is None:
+        replyString = "Error in Twilio"
+        resp = twilio.twiml.Response()
+        resp.message(replyString)
+        return str(resp)
     medicine = name.split('near')[0]
     location = name.split('near')[1]
     API_KEY = config.geocode_key
