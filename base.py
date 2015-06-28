@@ -32,7 +32,7 @@ def hello_monkey():
     medicine = name.split('near')[0]
     location = name.split('near')[1]
     API_KEY = config.geocode_key
-    Address = name 
+    Address = location 
 
     r = requests.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + Address + "&key="+API_KEY)
 
