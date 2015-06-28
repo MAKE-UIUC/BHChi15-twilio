@@ -25,6 +25,8 @@ GEOCODE_KEY = config.geocode_key
 
 app = Flask(__name__)
  
+def helper(obj):
+    return obj['approx_dist']
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
     """Respond to incoming calls with a simple text message."""
@@ -36,8 +38,7 @@ def hello_monkey():
     baseurl = "http://bh1.intense.io/api/v1/users/pharmacies?medicine_name="
     radius = "100"
 
-    def helper(obj):
-        return obj['approx_dist']
+
 
     r = requests.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + Address + "&key="+API_KEY)
 
