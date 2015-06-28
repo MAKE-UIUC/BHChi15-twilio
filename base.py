@@ -20,17 +20,16 @@ import config
 
 SECRET_KEY =  config.key #CONFIG['twilio_secret_key']
 #GEOCODE_KEY = CONFIG['geocode_key']
-#app = Flask(__name__)
+
 app = Flask(__name__)
-app.config.from_object(__name__)
-
-
+ 
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
-    name = request.POST.get('Body', '')
+    """Respond to incoming calls with a simple text message."""
+ 
     resp = twilio.twiml.Response()
-    resp.message("Hello, Mobile Monkey" + name)
+    resp.message("Hello, Mobile Monkey")
     return str(resp)
-
+ 
 if __name__ == "__main__":
     app.run(debug=True)
