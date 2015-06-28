@@ -34,19 +34,14 @@ def hello_monkey():
 
     r = requests.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + Address + "&key="+API_KEY)
 
-    #print r.json()['results']['geometry']['location']['lat']
     jsonResponse = json.loads(r.text)
-    latGrab = json.dumps([s['geometry']['location']['lat'] for s in jsonResponse['results']], indent=3)
-    lonGrab = json.dumps([s['geometry']['location']['lng'] for s in jsonResponse['results']], indent=3)
-    print "starrrrt"
-    print latGrab
-    print lonGrab
-    latitude = latGrab.replace('[', '').replace(']', '').replace(' ', '').replace('\n','')
-    longitude = lonGrab.replace('[', '').replace(']', '').replace(' ', '').replace('\n','')
-    replyString = latitude + "," + longitude
+    try:
+        latitude = json.dumps(jsonResponse['results'][0]['geometry']['location']['lat'])
+        longitude = json.dumps(jsonResponse['results'][0]['geometry']['location']['lng'])
+        replyString = latitude + "," + longitude
+    except:
+        replyString = "No results found for specified location. Try another description of the location"
     resp = twilio.twiml.Response()
-
-
     resp.message(replyString)
     return str(resp)
  
