@@ -10,7 +10,7 @@ import json
 
 
 SECRET_KEY =  config.key 
-GEOCODE_KEY = conf ig.geocode_key
+GEOCODE_KEY = config.geocode_key
 
 app = Flask(__name__)
  
