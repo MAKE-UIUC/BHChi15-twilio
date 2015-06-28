@@ -29,6 +29,8 @@ app = Flask(__name__)
 def hello_monkey():
     """Respond to incoming calls with a simple text message."""
     name = request.values.get('Body', None)
+    medicine = name.split('near')[0]
+    location = name.split('near')[1]
     API_KEY = config.geocode_key
     Address = name 
 
@@ -41,6 +43,7 @@ def hello_monkey():
         replyString = latitude + "," + longitude
     except:
         replyString = "No results found for specified location. Try another description of the location"
+    replyString = replyString + medicine + location
     resp = twilio.twiml.Response()
     resp.message(replyString)
     return str(resp)
