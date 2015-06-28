@@ -42,13 +42,16 @@ def hello_monkey():
         longitude = json.dumps(jsonResponse['results'][0]['geometry']['location']['lng'])
         
     except:
-        replyString = "No results found for specified location. Try another description of the location"
+        replyString = "Location not found. Try another description of the location"
         resp = twilio.twiml.Response()
         resp.message(replyString)
         return str(resp)
-    replyString = medicine + "can be found near" + '"' + location + '"' + " at apicall(" + latitude + "," + longitude + ")" 
+    
+    replyString = medicine + "can be found near " + '"' + location + '"' + " at apicall(" + latitude + "," + longitude + ")" + "\n" + 'to prepay for pickup, text "XX.XX to order@medsnear.me note XXXXXXX" to 729725'
     resp = twilio.twiml.Response()
     resp.message(replyString)
+
+XX.XX to order@medsnear.me note XXXXXXX
     return str(resp)
  
 if __name__ == "__main__":
