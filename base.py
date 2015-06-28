@@ -51,9 +51,7 @@ def hello_monkey():
     replyString = medicine + "at apicall(" + latitude + "," + longitude + ")" 
     replyString2 = "To prepay for pickup, text " + "\"" + "XX.XX to order@medsnear.me note XXXXXXX" + "\"" +  "to 729725" 
     replyString3 = "Forward the previous message to a friend if no internet is avaliable, and they are willing to pay for you."    
-
-    resp.message(replyString3)
-    resp.message(replyString2)
+    replyString = replyString  + "\n" + "---------"  + "\n" + replyString2 + "\n" + "---------" + "\n" + replyString3
     resp.message(replyString)
     return str(resp) 
  
