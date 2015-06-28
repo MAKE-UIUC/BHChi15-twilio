@@ -27,11 +27,10 @@ app.config.from_object(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
-    """Respond to incoming calls with a simple text message."""
     name = request.POST.get('Body', '')
     resp = twilio.twiml.Response()
     resp.message("Hello, Mobile Monkey" + name)
     return str(resp)
- 
+
 if __name__ == "__main__":
     app.run(debug=True)
