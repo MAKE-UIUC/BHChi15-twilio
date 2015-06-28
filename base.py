@@ -50,8 +50,8 @@ def hello_monkey():
 
     r = requests.get(urlString)
     jsonResponse = json.loads(r.text)
-    num_locations = int(jsonResponse['num_locations'])
-    if num_locations == 0:
+    num_locations = json.dumps(jsonResponse['num_locations'])
+    if num_locations is 0:
         replyString = "No locations with specified med found."
         resp = twilio.twiml.Response()
         resp.message(replyString)
@@ -60,10 +60,10 @@ def hello_monkey():
     address_list = jsonResponse['locations']
     address_list.sort(key=lambda obj: obj['approx_dist'])
 
-    address_found = address_list[0]['address']
-    medicine_found = address_list[0]['medicine_name']
-    price = address_list[0]['price']
-    store_name = address_list[0]['name']
+    address_found = json.dumps(address_list[0]['address']).replace("\"","")
+    medicine_found = json.dumps(address_list[0]['medicine_name']).replace("\"","")
+    price = json.dumps(address_list[0]['price']).replace("\"","")
+    store_name = json.dumps(address_list[0]['name']).replace("\"","")
 
     
     resp = twilio.twiml.Response()
