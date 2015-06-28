@@ -47,7 +47,7 @@ def hello_monkey():
         resp.message(replyString)
         return str(resp)
     
-    replyString = medicine + "can be found near " + "\'" + location + "\'" + " at apicall(" + latitude + "," + longitude + ")" + "\n" + "To prepay for pickup, text" + "\'" + "XX.XX to order@medsnear.me note XXXXXXX" + "\'" +  "to 729725"
+    replyString = medicine + "can be found near " + "\"" + location + "\"" + " at apicall(" + latitude + "," + longitude + ")" + "\n" + "To prepay for pickup, text " + "\"" + "XX.XX to order@medsnear.me note XXXXXXX" + "\"" +  "to 729725"
     resp = twilio.twiml.Response()
     resp.message(replyString)
     return str(resp)
