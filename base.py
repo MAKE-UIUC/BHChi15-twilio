@@ -24,7 +24,7 @@ def hello_monkey():
     location = name.split('near')[1]
     API_KEY = config.geocode_key
     Address = location 
-    baseurl = "http://bh1.intense.io/api/v1/users/pharmacies?medicine_name="
+    baseurl = "http://steam.intense.io/api/v1/users/pharmacies?medicine_name="
     radius = "100"
 
 
@@ -63,7 +63,7 @@ def hello_monkey():
     
     resp = twilio.twiml.Response()
     replyString = medicine_found + "can be found at" + store_name + " " + address_found
-    replyString2 = "To prepay for pickup, text " + "\"" + price + " to order@medsnear.me note XXXXXXX" + "\"" +  "to 729725" 
+    replyString2 = "To prepay for pickup, text " + "\"" + price + " to order@medsnear.me note ID:49x20d" + "\"" +  "to 729725" 
     replyString3 = "Forward this to a friend if no internet is avaliable, and they are willing to pay for you."    
     replyString = replyString  + "\n" + "---------"  + "\n" + replyString2 + "\n" + "---------" + "\n" + replyString3
     resp.message(replyString)
